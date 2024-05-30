@@ -1,0 +1,83 @@
+{
+    "$defs": {
+        "SubnetMetadata": {
+            "additionalProperties": false,
+            "properties": {
+                "name": {
+                    "default": null,
+                    "description": "Subnet name",
+                    "title": "Name",
+                    "type": "string"
+                },
+                "description": {
+                    "default": null,
+                    "description": "Subnet description",
+                    "title": "Description",
+                    "type": "string"
+                },
+                "tier": {
+                    "default": null,
+                    "description": "Subnet tier",
+                    "examples": [
+                        "public",
+                        "private",
+                        "data"
+                    ],
+                    "title": "Tier",
+                    "type": "string"
+                }
+            },
+            "title": "SubnetMetadata",
+            "type": "object"
+        }
+    },
+    "additionalProperties": false,
+    "properties": {
+        "network_cidr": {
+            "description": "Top-level subnet CIDR.",
+            "examples": [
+                "10.12.0.0/16",
+                "10.0.0.0/8"
+            ],
+            "format": "ipv4network",
+            "title": "Network Cidr",
+            "type": "string"
+        },
+        "metadata": {
+            "additionalProperties": {
+                "$ref": "#/$defs/SubnetMetadata"
+            },
+            "description": "Metadata describing the subnets by ids.",
+            "title": "Metadata",
+            "type": "object"
+        },
+        "structure": {
+            "description": "Subnet structure",
+            "items": {
+                "anyOf": [
+                    {
+                        "items": {},
+                        "type": "array"
+                    },
+                    {
+                        "type": "string"
+                    },
+                    {
+                        "additionalProperties": {
+                            "type": "integer"
+                        },
+                        "type": "object"
+                    }
+                ]
+            },
+            "title": "Structure",
+            "type": "array"
+        }
+    },
+    "required": [
+        "network_cidr",
+        "structure"
+    ],
+    "title": "NetworkStructureConfiguration",
+    "type": "object"
+}
