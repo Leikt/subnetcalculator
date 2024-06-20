@@ -2,7 +2,15 @@
 
 ## Installation
 
-CLone this repository in local
+CLone this repository in local.
+
+Create a virtual environment and install the packages:
+```shell
+python -m venv .env.windows
+.env.windows/Scripts/activate
+pip install pyyaml pydantic
+```
+
 
 Run `python subnetcalculator/subnetcalculator.py --help`
 
@@ -28,11 +36,15 @@ options:
 
 ## Generate a configuration example
 
+> Always activate the environment first: `.env.windows/Scripts/activate`
+
 `python subnetcalculator/subnetcalculator.py --generate-example simple yourfile.yaml`
 
 That will create a sample configuration file `yourfile.yaml`.
 
 ## Compute subnets
+
+> Always activate the environment first: `.env.windows/Scripts/activate`
 
 `python subnetcalculator/subnetcalculator.py --out-stdout yourfile.yaml`
 
