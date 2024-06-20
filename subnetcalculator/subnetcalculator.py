@@ -180,8 +180,8 @@ def parse_cli_arguments():
         help='Generate an example configuration file.'
     )
     parser.add_argument(
-        '--out-stdin', default=False, action='store_true',
-        help='Render the computation to the STDIN using print.'
+        '--out-stdout', default=False, action='store_true',
+        help='Render the computation to the stdout using print.'
     )
     parser.add_argument(
         '--out-txt', default=None, type=Path, metavar='FILE',
@@ -219,7 +219,7 @@ def cli():
     network_structure = calculator.compute()
 
     exporter = Exporter(configuration, network_structure)
-    if args.out_stdin:
+    if args.out_stdout:
         txt = exporter.export_txt()
         print(txt)
 
